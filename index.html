@@ -2,16 +2,18 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>NisiOS — Davide Nisi | IT Manager</title>
-  <meta name="description" content="NisiOS: sistema operativo interattivo del CV di Davide Nisi - IT Manager presso Caracol AM. Axis Industrial Edition.">
+  <meta name="description" content="NisiOS: sistema operativo interattivo del CV di Davide Nisi - IT Manager presso Caracol AM.">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Boot Screen -->
   <div id="boot-screen">
     <div class="boot-content">
       <div class="boot-logo">Nisi<span>OS</span></div>
@@ -21,23 +23,22 @@
     </div>
   </div>
 
-  <!-- Desktop -->
   <div id="desktop" class="hidden">
-    <div class="desktop-icons">
+    <div class="desktop-icons" id="desktop-icons">
       <div class="icon" data-window="about" title="About Me">
-        <div class="icon-img about-icon">DN</div>
+        <div class="icon-img">DN</div>
         <span>About</span>
       </div>
       <div class="icon" data-window="experience" title="Esperienza">
-        <div class="icon-img exp-icon">IT</div>
+        <div class="icon-img">IT</div>
         <span>Experience</span>
       </div>
       <div class="icon" data-window="certs" title="Certificazioni">
-        <div class="icon-img cert-icon">CE</div>
+        <div class="icon-img">CE</div>
         <span>Certs</span>
       </div>
       <div class="icon" data-window="projects" title="Progetti">
-        <div class="icon-img proj-icon">PR</div>
+        <div class="icon-img">PR</div>
         <span>Projects</span>
       </div>
       <div class="icon" data-window="terminal" title="Terminal">
@@ -45,11 +46,11 @@
         <span>Terminal</span>
       </div>
       <div class="icon" data-window="skills" title="Competenze">
-        <div class="icon-img skills-icon">SK</div>
+        <div class="icon-img">SK</div>
         <span>Skills</span>
       </div>
       <div class="icon" data-window="contact" title="Contatti">
-        <div class="icon-img contact-icon">@</div>
+        <div class="icon-img">@</div>
         <span>Contact</span>
       </div>
     </div>
@@ -58,7 +59,7 @@
 
     <div id="taskbar">
       <div class="taskbar-left">
-        <button id="start-btn" title="Menu Start">NisiOS</button>
+        <button id="start-btn" type="button">NisiOS</button>
         <div class="running-apps" id="running-apps"></div>
       </div>
       <div class="taskbar-right">
@@ -80,7 +81,7 @@
         <li data-window="terminal">Terminal</li>
         <li data-window="contact">Contact</li>
       </ul>
-      <div class="start-footer">NisiOS v2.0 · Axis Industrial</div>
+      <div class="start-footer">NisiOS v2.1 · Auto Responsive</div>
     </div>
   </div>
 

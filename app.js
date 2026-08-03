@@ -1,13 +1,10 @@
-/* NisiOS - Interactive CV Operating System
-   Axis Industrial Edition — Responsive
-*/
+/* NisiOS v2.1 — Auto Responsive by device */
 
 const PROFILE = {
   name: "Davide Nisi",
   location: "Ornago, Lombardia, Italia",
   current: "Caracol AM",
   roleHint: "IT Manager",
-  headline: "IT Manager presso Caracol AM",
   about: "Nel corso degli anni ho maturato passione e manualita nell'installazione, configurazione e ordinaria manutenzione di apparecchiature informatiche quali Notebook, Desktop, Tablet e Smartphone. Conoscenza delle componenti interne dei computer, le varie architetture, i tipi di memoria, le schede grafiche e quelle audio. Il mio obiettivo e sempre stato quello di crescere, ampliare sempre il mio bagaglio culturale e di assorbire ogni singola novita che il mondo informatico possa offrire giorno dopo giorno. Da un paio di anni ho intrapreso un percorso di crescita in ambito sistemistico per quanto riguarda l'analisi e l'evasione di richieste tramite Incident e Service Request riguardanti Active Directory, Exchange, Console Antipam e Monitoraggio.",
   education: "IIS DON MILANI - Informatica (2011-2016) - Votazione 67",
   recommendations: [
@@ -17,46 +14,11 @@ const PROFILE = {
 };
 
 const EXPERIENCE = [
-  {
-    title: "IT Manager",
-    company: "Caracol AM",
-    period: "apr 2024 - Presente (2 anni 5 mesi)",
-    location: "Barlassina, Lombardia, Italia - In sede",
-    type: "A tempo pieno",
-    desc: "IT Manager presso Caracol AM, scale-up europea leader nel Large Format Additive Manufacturing (robotica + stampa 3D industriale)."
-  },
-  {
-    title: "IT Manager",
-    company: "Area MediaWeb Srl",
-    period: "giu 2023 - gen 2024 (8 mesi)",
-    location: "Veduggio, Lombardia, Italia - In sede",
-    type: "A tempo pieno",
-    desc: "Installation and management of Windows Server (2003 R2, 2019, 2022), Active Directory, DNS, DHCP, File Server, NAS. Gestione reti IT e Gestione IT."
-  },
-  {
-    title: "IT Manager and System Administrator",
-    company: "TECMA SOLUTIONS S.p.A.",
-    period: "gen 2020 - giu 2023 (3 anni 6 mesi)",
-    location: "Milano, Italia",
-    type: "A tempo pieno",
-    desc: "Installation and management of Windows Server (2019), Active Directory, DNS, DHCP, File Server, NAS. Hardware troubleshooting su Windows/Mac, PC e multifunzione. Microsoft Office 365, Exchange Online, SharePoint Online. Networking (Firewall, Switch, Router, Access Point) e protocolli TCP/IP. Ambienti virtuali on-premise e cloud. Backup ad alta affidabilita e strutture iperconvergenti (Veeam, Iperius, Keepit). MDM WorkspaceONE. Troubleshooting OS e security (Sophos Central). Supporto Operation & Maintenance Server e network device. Gestione domini WEB (Aruba, FileZilla)."
-  },
-  {
-    title: "IT System Administrator",
-    company: "Elmec Informatica",
-    period: "giu 2019 - gen 2020 (8 mesi)",
-    location: "Biassono, Lombardia, Italia",
-    type: "A tempo pieno",
-    desc: "Proficient in system administration, with expertise in managing IT infrastructures, hardware, and vendor relationships."
-  },
-  {
-    title: "Senior Hardware Technician",
-    company: "Elmec Informatica",
-    period: "gen 2017 - mag 2019 (2 anni 5 mesi)",
-    location: "Biassono, Lombardia, Italia",
-    type: "A tempo pieno",
-    desc: "Advanced hardware expertise (servers, storage, networking). Troubleshooting e ottimizzazione. Client management, vendor relationship, documentazione e reporting. Continual learning su tecnologie hardware emergenti."
-  }
+  { title: "IT Manager", company: "Caracol AM", period: "apr 2024 - Presente (2 anni 5 mesi)", location: "Barlassina, Lombardia, Italia - In sede", desc: "IT Manager presso Caracol AM, scale-up europea leader nel Large Format Additive Manufacturing (robotica + stampa 3D industriale)." },
+  { title: "IT Manager", company: "Area MediaWeb Srl", period: "giu 2023 - gen 2024 (8 mesi)", location: "Veduggio, Lombardia, Italia - In sede", desc: "Installation and management of Windows Server (2003 R2, 2019, 2022), Active Directory, DNS, DHCP, File Server, NAS. Gestione reti IT e Gestione IT." },
+  { title: "IT Manager and System Administrator", company: "TECMA SOLUTIONS S.p.A.", period: "gen 2020 - giu 2023 (3 anni 6 mesi)", location: "Milano, Italia", desc: "Installation and management of Windows Server (2019), Active Directory, DNS, DHCP, File Server, NAS. Hardware troubleshooting su Windows/Mac, PC e multifunzione. Microsoft Office 365, Exchange Online, SharePoint Online. Networking (Firewall, Switch, Router, Access Point) e protocolli TCP/IP. Ambienti virtuali on-premise e cloud. Backup ad alta affidabilita e strutture iperconvergenti (Veeam, Iperius, Keepit). MDM WorkspaceONE. Troubleshooting OS e security (Sophos Central). Supporto Operation & Maintenance Server e network device. Gestione domini WEB (Aruba, FileZilla)." },
+  { title: "IT System Administrator", company: "Elmec Informatica", period: "giu 2019 - gen 2020 (8 mesi)", location: "Biassono, Lombardia, Italia", desc: "Proficient in system administration, with expertise in managing IT infrastructures, hardware, and vendor relationships." },
+  { title: "Senior Hardware Technician", company: "Elmec Informatica", period: "gen 2017 - mag 2019 (2 anni 5 mesi)", location: "Biassono, Lombardia, Italia", desc: "Advanced hardware expertise (servers, storage, networking). Troubleshooting e ottimizzazione. Client management, vendor relationship, documentazione e reporting. Continual learning su tecnologie hardware emergenti." }
 ];
 
 const CERTS = [
@@ -91,7 +53,7 @@ const SKILLS = [
 ];
 
 function isMobile() {
-  return window.innerWidth <= 700;
+  return window.matchMedia('(max-width: 768px)').matches;
 }
 
 window.addEventListener('load', function () {
@@ -104,8 +66,8 @@ window.addEventListener('load', function () {
       if (desktop) desktop.classList.remove('hidden');
       updateClock();
       setInterval(updateClock, 1000);
-    }, 600);
-  }, 1800);
+    }, 500);
+  }, 1600);
 });
 
 function updateClock() {
@@ -115,7 +77,10 @@ function updateClock() {
   if (isMobile()) {
     el.textContent = now.toLocaleString('it-IT', { hour: '2-digit', minute: '2-digit' });
   } else {
-    el.textContent = now.toLocaleString('it-IT', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+    el.textContent = now.toLocaleString('it-IT', {
+      weekday: 'short', day: 'numeric', month: 'short',
+      hour: '2-digit', minute: '2-digit'
+    });
   }
 }
 
@@ -124,9 +89,9 @@ var openWindows = new Map();
 
 function buildAbout() {
   var recs = PROFILE.recommendations.map(function (r) {
-    return '<blockquote style="border-left:3px solid var(--safety);padding-left:12px;margin:10px 0;color:var(--text-muted);font-style:italic;font-size:0.8rem">"' + r.text + '"<br><span style="font-style:normal;font-size:0.72rem;color:var(--text)">— ' + r.author + '</span></blockquote>';
+    return '<blockquote style="border-left:3px solid var(--safety);padding-left:10px;margin:8px 0;color:var(--text-muted);font-style:italic;font-size:0.78rem">"' + r.text + '"<br><span style="font-style:normal;font-size:0.7rem;color:var(--text)">— ' + r.author + '</span></blockquote>';
   }).join('');
-  return '<div class="profile-header"><div class="avatar">DN</div><div><h2 style="margin:0">' + PROFILE.name + '</h2><p style="margin:4px 0 0;color:var(--text-muted)">' + PROFILE.roleHint + ' @ ' + PROFILE.current + '</p><p style="margin:2px 0 0;font-size:0.78rem">' + PROFILE.location + '</p></div></div><p>' + PROFILE.about.replace(/\n/g, '<br>') + '</p><h3>Formazione</h3><p><strong>' + PROFILE.education + '</strong></p><h3>Referenze</h3>' + recs;
+  return '<div class="profile-header"><div class="avatar">DN</div><div><h2 style="margin:0">' + PROFILE.name + '</h2><p style="margin:3px 0 0;color:var(--text-muted)">' + PROFILE.roleHint + ' @ ' + PROFILE.current + '</p><p style="margin:2px 0 0;font-size:0.75rem">' + PROFILE.location + '</p></div></div><p>' + PROFILE.about.replace(/\n/g, '<br>') + '</p><h3>Formazione</h3><p><strong>' + PROFILE.education + '</strong></p><h3>Referenze</h3>' + recs;
 }
 
 function buildExperience() {
@@ -138,10 +103,10 @@ function buildExperience() {
 function buildCerts() {
   var cards = CERTS.map(function (c) {
     var badge = c.type === 'apple' ? 'Apple' : (c.type === 'android' ? 'Android' : (c.type === 'ai' ? 'AI' : 'IT'));
-    return '<div class="cert-card"><strong>' + c.name + '</strong><div class="issuer">' + c.issuer + ' — ' + c.year + '</div><span class="badge ' + c.type + '" style="margin-top:8px">' + badge + '</span></div>';
+    return '<div class="cert-card"><strong>' + c.name + '</strong><div class="issuer">' + c.issuer + ' — ' + c.year + '</div><span class="badge ' + c.type + '" style="margin-top:6px">' + badge + '</span></div>';
   }).join('');
   var courses = COURSES.map(function (c) { return '<span class="badge">' + c + '</span>'; }).join('');
-  return '<h3>Certificazioni</h3><div class="cert-grid">' + cards + '</div><h3 style="margin-top:1.5rem">Corsi</h3><div style="display:flex;flex-wrap:wrap;gap:6px">' + courses + '</div>';
+  return '<h3>Certificazioni</h3><div class="cert-grid">' + cards + '</div><h3 style="margin-top:1.3rem">Corsi</h3><div style="display:flex;flex-wrap:wrap;gap:5px">' + courses + '</div>';
 }
 
 function buildProjects() {
@@ -154,11 +119,11 @@ function buildSkills() {
   var bars = SKILLS.map(function (s) {
     return '<div class="skill-bar"><label><span>' + s.name + '</span><span>' + s.level + '%</span></label><div class="skill-track"><div class="skill-fill" style="width:' + s.level + '%"></div></div></div>';
   }).join('');
-  return '<h3>Competenze principali</h3>' + bars + '<h3 style="margin-top:1.4rem">Stack & Tools</h3><div style="display:flex;flex-wrap:wrap;gap:6px"><span class="badge">Windows Server</span><span class="badge">Active Directory</span><span class="badge">Microsoft 365</span><span class="badge">Veeam</span><span class="badge">Sophos</span><span class="badge">WorkspaceONE</span><span class="badge apple">macOS / Hardware</span><span class="badge">Networking</span><span class="badge ai">Claude / AI</span></div>';
+  return '<h3>Competenze principali</h3>' + bars + '<h3 style="margin-top:1.2rem">Stack & Tools</h3><div style="display:flex;flex-wrap:wrap;gap:5px"><span class="badge">Windows Server</span><span class="badge">Active Directory</span><span class="badge">Microsoft 365</span><span class="badge">Veeam</span><span class="badge">Sophos</span><span class="badge">WorkspaceONE</span><span class="badge apple">macOS / Hardware</span><span class="badge">Networking</span><span class="badge ai">Claude / AI</span></div>';
 }
 
 function buildContact() {
-  return '<h2>Mettiamoci in contatto</h2><p>Profilo LinkedIn ufficiale:</p><p style="margin:12px 0"><a href="https://www.linkedin.com/in/davide-nisi-8a7324137" target="_blank" rel="noopener">linkedin.com/in/davide-nisi-8a7324137</a></p><p style="margin-top:1.4rem;color:var(--text-muted);font-size:0.8rem">NisiOS — portfolio interattivo ospitato su GitHub Pages. Dati aggiornati dal profilo LinkedIn.</p><div style="margin-top:1.6rem;padding:12px 14px;background:var(--bg-panel);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink)"><strong>NisiOS</strong><br><span style="font-size:0.72rem;color:var(--text-muted)">Sistema Operativo Curriculum — v2.0 Axis Industrial</span></div>';
+  return '<h2>Mettiamoci in contatto</h2><p>Profilo LinkedIn ufficiale:</p><p style="margin:10px 0"><a href="https://www.linkedin.com/in/davide-nisi-8a7324137" target="_blank" rel="noopener">linkedin.com/in/davide-nisi-8a7324137</a></p><p style="margin-top:1.2rem;color:var(--text-muted);font-size:0.78rem">NisiOS — portfolio interattivo su GitHub Pages.</p><div style="margin-top:1.4rem;padding:12px;background:var(--bg-panel);border:2px solid #000;box-shadow:3px 3px 0 #000"><strong>NisiOS</strong><br><span style="font-size:0.7rem;color:var(--text-muted)">v2.1 · Axis Industrial · Auto Responsive</span></div>';
 }
 
 var windowTemplates = {
@@ -173,46 +138,69 @@ var windowTemplates = {
 
 function openWindow(id) {
   if (openWindows.has(id)) {
-    var win = openWindows.get(id);
-    win.style.zIndex = ++zIndex;
-    win.style.display = 'flex';
+    var existing = openWindows.get(id);
+    existing.style.display = 'flex';
+    existing.style.zIndex = ++zIndex;
+    // Bring to front on mobile by closing others visually optional - keep all
     updateTaskbar();
     return;
   }
+
   var tpl = windowTemplates[id];
   if (!tpl) return;
 
   var win = document.createElement('div');
-  win.className = 'window' + (id === 'terminal' ? ' terminal-win' : '');
+  win.className = 'window';
   win.dataset.id = id;
   win.style.zIndex = ++zIndex;
 
   var mobile = isMobile();
-  if (mobile) {
-    win.style.top = '70px';
-    win.style.left = '6px';
-    win.style.width = 'calc(100vw - 12px)';
-  } else {
-    win.style.top = (50 + openWindows.size * 26) + 'px';
-    win.style.left = (100 + openWindows.size * 32) + 'px';
-    win.style.width = (id === 'terminal' ? '600px' : '560px');
+
+  // On mobile: CSS handles full-width layout via media query.
+  // On desktop: cascade positions.
+  if (!mobile) {
+    win.style.top = (48 + openWindows.size * 24) + 'px';
+    win.style.left = (90 + openWindows.size * 28) + 'px';
+    win.style.width = (id === 'terminal' ? '580px' : '520px');
   }
+  // On mobile we intentionally do NOT set inline top/left/width
+  // so the CSS @media rules take full control.
 
   var isTerminal = id === 'terminal';
-  win.innerHTML = '<div class="window-header"><div class="window-title">' + tpl.title + '</div><div class="window-controls"><button class="win-btn win-min" title="Minimizza" aria-label="Minimizza"></button><button class="win-btn win-max" title="Ingrandisci" aria-label="Ingrandisci"></button><button class="win-btn win-close" title="Chiudi" aria-label="Chiudi"></button></div></div><div class="window-body ' + (isTerminal ? 'terminal-body' : '') + '" id="body-' + id + '">' + (isTerminal ? '' : tpl.content) + '</div>';
+  win.innerHTML =
+    '<div class="window-header">' +
+      '<div class="window-title">' + tpl.title + '</div>' +
+      '<div class="window-controls">' +
+        '<button type="button" class="win-btn win-min" aria-label="Minimizza"></button>' +
+        '<button type="button" class="win-btn win-max" aria-label="Ingrandisci"></button>' +
+        '<button type="button" class="win-btn win-close" aria-label="Chiudi"></button>' +
+      '</div>' +
+    '</div>' +
+    '<div class="window-body' + (isTerminal ? ' terminal-body' : '') + '" id="body-' + id + '">' +
+      (isTerminal ? '' : tpl.content) +
+    '</div>';
 
   document.getElementById('windows-container').appendChild(win);
   openWindows.set(id, win);
 
   win.querySelector('.win-close').onclick = function () { closeWindow(id); };
-  win.querySelector('.win-min').onclick = function () { win.style.display = 'none'; updateTaskbar(); };
-  win.querySelector('.win-max').onclick = function () { win.classList.toggle('maximized'); };
+  win.querySelector('.win-min').onclick = function () {
+    win.style.display = 'none';
+    updateTaskbar();
+  };
+  win.querySelector('.win-max').onclick = function () {
+    win.classList.toggle('maximized');
+  };
 
-  makeDraggable(win);
+  if (!mobile) {
+    makeDraggable(win);
+  }
+
   win.addEventListener('mousedown', function () { win.style.zIndex = ++zIndex; });
   win.addEventListener('touchstart', function () { win.style.zIndex = ++zIndex; }, { passive: true });
 
   if (isTerminal) initTerminal(win.querySelector('.window-body'));
+
   updateTaskbar();
   var sm = document.getElementById('start-menu');
   if (sm) sm.classList.add('hidden');
@@ -220,7 +208,11 @@ function openWindow(id) {
 
 function closeWindow(id) {
   var win = openWindows.get(id);
-  if (win) { win.remove(); openWindows.delete(id); updateTaskbar(); }
+  if (win) {
+    win.remove();
+    openWindows.delete(id);
+    updateTaskbar();
+  }
 }
 
 function updateTaskbar() {
@@ -230,11 +222,13 @@ function updateTaskbar() {
   openWindows.forEach(function (win, id) {
     var btn = document.createElement('div');
     btn.className = 'task-app' + (win.style.display !== 'none' ? ' active' : '');
-    var shortTitle = (windowTemplates[id].title.split('—')[0] || windowTemplates[id].title.split('-')[0] || id).trim();
-    btn.textContent = shortTitle;
+    var title = windowTemplates[id].title;
+    btn.textContent = (title.split('—')[0] || title.split('-')[0] || id).trim();
     btn.onclick = function () {
-      if (win.style.display === 'none') { win.style.display = 'flex'; win.style.zIndex = ++zIndex; }
-      else { win.style.zIndex = ++zIndex; }
+      if (win.style.display === 'none') {
+        win.style.display = 'flex';
+      }
+      win.style.zIndex = ++zIndex;
       updateTaskbar();
     };
     container.appendChild(btn);
@@ -243,76 +237,60 @@ function updateTaskbar() {
 
 function makeDraggable(win) {
   var header = win.querySelector('.window-header');
-  var offsetX = 0, offsetY = 0, dragging = false;
+  var ox = 0, oy = 0, dragging = false;
 
-  function startDrag(clientX, clientY) {
+  function start(x, y) {
     if (win.classList.contains('maximized')) return;
     dragging = true;
-    offsetX = clientX - win.offsetLeft;
-    offsetY = clientY - win.offsetTop;
+    ox = x - win.offsetLeft;
+    oy = y - win.offsetTop;
     win.style.zIndex = ++zIndex;
   }
-
-  function moveDrag(clientX, clientY) {
+  function move(x, y) {
     if (!dragging) return;
-    var x = clientX - offsetX;
-    var y = clientY - offsetY;
-    // Keep window mostly on screen
-    var maxX = window.innerWidth - 60;
-    var maxY = window.innerHeight - 60;
-    win.style.left = Math.max(-win.offsetWidth + 80, Math.min(x, maxX)) + 'px';
-    win.style.top = Math.max(0, Math.min(y, maxY)) + 'px';
+    win.style.left = Math.max(-40, Math.min(x - ox, window.innerWidth - 60)) + 'px';
+    win.style.top = Math.max(0, Math.min(y - oy, window.innerHeight - 60)) + 'px';
   }
-
-  function endDrag() {
-    dragging = false;
-  }
+  function end() { dragging = false; }
 
   header.addEventListener('mousedown', function (e) {
-    if (e.target.classList.contains('win-btn') || e.target.closest('.win-btn')) return;
+    if (e.target.closest('.win-btn')) return;
     e.preventDefault();
-    startDrag(e.clientX, e.clientY);
+    start(e.clientX, e.clientY);
   });
+  document.addEventListener('mousemove', function (e) { move(e.clientX, e.clientY); });
+  document.addEventListener('mouseup', end);
 
-  document.addEventListener('mousemove', function (e) {
-    moveDrag(e.clientX, e.clientY);
-  });
-
-  document.addEventListener('mouseup', endDrag);
-
-  // Touch support
   header.addEventListener('touchstart', function (e) {
-    if (e.target.classList.contains('win-btn') || e.target.closest('.win-btn')) return;
-    if (e.touches.length !== 1) return;
-    var t = e.touches[0];
-    startDrag(t.clientX, t.clientY);
+    if (e.target.closest('.win-btn') || e.touches.length !== 1) return;
+    start(e.touches[0].clientX, e.touches[0].clientY);
   }, { passive: true });
-
   document.addEventListener('touchmove', function (e) {
     if (!dragging || e.touches.length !== 1) return;
-    var t = e.touches[0];
-    moveDrag(t.clientX, t.clientY);
+    move(e.touches[0].clientX, e.touches[0].clientY);
   }, { passive: true });
-
-  document.addEventListener('touchend', endDrag);
-  document.addEventListener('touchcancel', endDrag);
+  document.addEventListener('touchend', end);
+  document.addEventListener('touchcancel', end);
 }
 
 document.querySelectorAll('.icon').forEach(function (icon) {
-  icon.addEventListener('click', function () { openWindow(icon.dataset.window); });
+  icon.addEventListener('click', function () {
+    openWindow(icon.dataset.window);
+  });
 });
 
 var startBtn = document.getElementById('start-btn');
 if (startBtn) {
   startBtn.addEventListener('click', function (e) {
     e.stopPropagation();
-    var sm = document.getElementById('start-menu');
-    if (sm) sm.classList.toggle('hidden');
+    document.getElementById('start-menu').classList.toggle('hidden');
   });
 }
 
 document.querySelectorAll('#start-menu li').forEach(function (li) {
-  li.addEventListener('click', function () { openWindow(li.dataset.window); });
+  li.addEventListener('click', function () {
+    openWindow(li.dataset.window);
+  });
 });
 
 document.addEventListener('click', function (e) {
@@ -322,9 +300,20 @@ document.addEventListener('click', function (e) {
   }
 });
 
-// Recalculate on resize
+// On resize / orientation change: strip inline positions on mobile so CSS rules apply
 window.addEventListener('resize', function () {
   updateClock();
+  var mobile = isMobile();
+  openWindows.forEach(function (win) {
+    if (mobile) {
+      // Remove inline geometry so media-query CSS takes over
+      win.style.top = '';
+      win.style.left = '';
+      win.style.width = '';
+      win.style.height = '';
+      win.classList.remove('maximized');
+    }
+  });
 });
 
 function initTerminal(container) {
@@ -364,7 +353,7 @@ function initTerminal(container) {
     container.scrollTop = container.scrollHeight;
   }
 
-  print('<div class="output">NisiOS Terminal v2.0 — Digita <span style="color:var(--term-green)">help</span> per i comandi.</div>');
+  print('<div class="output">NisiOS Terminal v2.1 — Digita <span style="color:var(--term-green)">help</span> per i comandi.</div>');
   newLine();
 }
 
@@ -374,7 +363,7 @@ function processCommand(cmd, print, newLine) {
   if (!cmd) { newLine(); return; }
 
   if (lower === 'help') {
-    output = 'Comandi: whoami, about, experience, certs, projects, skills, contact, neofetch, clear, help';
+    output = 'Comandi: whoami · about · experience · certs · projects · skills · contact · neofetch · clear · help';
   } else if (lower === 'whoami') {
     output = PROFILE.name + '<br>' + PROFILE.roleHint + ' @ ' + PROFILE.current + '<br>' + PROFILE.location;
   } else if (lower === 'about') {
@@ -392,7 +381,7 @@ function processCommand(cmd, print, newLine) {
   } else if (lower === 'contact') {
     output = 'LinkedIn: https://www.linkedin.com/in/davide-nisi-8a7324137';
   } else if (lower === 'neofetch') {
-    output = 'nisi@NisiOS<br>-------------<br>OS: NisiOS 2.0 Axis Industrial<br>Host: Davide Nisi — IT Manager<br>Company: Caracol AM<br>Kernel: Windows Server / AD / M365<br>Skills: System Admin ***** | Hardware *****<br>Certs: Claude 101 · SCCM · Apple';
+    output = 'nisi@NisiOS<br>-------------<br>OS: NisiOS 2.1 Axis Industrial<br>Host: Davide Nisi — IT Manager<br>Company: Caracol AM<br>Kernel: Windows Server / AD / M365<br>Skills: System Admin ***** | Hardware *****';
   } else if (lower === 'clear') {
     var body = document.getElementById('body-terminal');
     if (body) body.innerHTML = '';
