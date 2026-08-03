@@ -1,5 +1,5 @@
 /* NisiOS - Interactive CV Operating System
-   Updated with full LinkedIn profile data - Davide Nisi
+   Axis Industrial Edition — Responsive
 */
 
 const PROFILE = {
@@ -90,6 +90,10 @@ const SKILLS = [
   { name: "IT Management & Team Coordination", level: 88 }
 ];
 
+function isMobile() {
+  return window.innerWidth <= 700;
+}
+
 window.addEventListener('load', function () {
   setTimeout(function () {
     var boot = document.getElementById('boot-screen');
@@ -101,14 +105,18 @@ window.addEventListener('load', function () {
       updateClock();
       setInterval(updateClock, 1000);
     }, 600);
-  }, 2000);
+  }, 1800);
 });
 
 function updateClock() {
   var el = document.getElementById('clock');
   if (!el) return;
   var now = new Date();
-  el.textContent = now.toLocaleString('it-IT', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+  if (isMobile()) {
+    el.textContent = now.toLocaleString('it-IT', { hour: '2-digit', minute: '2-digit' });
+  } else {
+    el.textContent = now.toLocaleString('it-IT', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+  }
 }
 
 var zIndex = 20;
@@ -116,21 +124,21 @@ var openWindows = new Map();
 
 function buildAbout() {
   var recs = PROFILE.recommendations.map(function (r) {
-    return '<blockquote style="border-left:3px solid var(--accent);padding-left:12px;margin:10px 0;color:var(--text-muted);font-style:italic">"' + r.text + '"<br><span style="font-style:normal;font-size:0.8rem;color:var(--text)">- ' + r.author + '</span></blockquote>';
+    return '<blockquote style="border-left:3px solid var(--safety);padding-left:12px;margin:10px 0;color:var(--text-muted);font-style:italic;font-size:0.8rem">"' + r.text + '"<br><span style="font-style:normal;font-size:0.72rem;color:var(--text)">— ' + r.author + '</span></blockquote>';
   }).join('');
-  return '<div class="profile-header"><div class="avatar">DN</div><div><h2 style="margin:0">' + PROFILE.name + '</h2><p style="margin:4px 0 0;color:var(--text-muted)">' + PROFILE.roleHint + ' @ ' + PROFILE.current + '</p><p style="margin:2px 0 0;font-size:0.82rem">' + PROFILE.location + '</p></div></div><p>' + PROFILE.about.replace(/\n/g, '<br>') + '</p><h3>Formazione</h3><p><strong>' + PROFILE.education + '</strong></p><h3>Referenze</h3>' + recs;
+  return '<div class="profile-header"><div class="avatar">DN</div><div><h2 style="margin:0">' + PROFILE.name + '</h2><p style="margin:4px 0 0;color:var(--text-muted)">' + PROFILE.roleHint + ' @ ' + PROFILE.current + '</p><p style="margin:2px 0 0;font-size:0.78rem">' + PROFILE.location + '</p></div></div><p>' + PROFILE.about.replace(/\n/g, '<br>') + '</p><h3>Formazione</h3><p><strong>' + PROFILE.education + '</strong></p><h3>Referenze</h3>' + recs;
 }
 
 function buildExperience() {
   return EXPERIENCE.map(function (e) {
-    return '<div class="timeline-item"><strong>' + e.title + '</strong> - ' + e.company + '<div class="meta">' + e.period + ' | ' + e.location + '</div><p>' + e.desc + '</p></div>';
+    return '<div class="timeline-item"><strong>' + e.title + '</strong> — ' + e.company + '<div class="meta">' + e.period + ' | ' + e.location + '</div><p>' + e.desc + '</p></div>';
   }).join('');
 }
 
 function buildCerts() {
   var cards = CERTS.map(function (c) {
     var badge = c.type === 'apple' ? 'Apple' : (c.type === 'android' ? 'Android' : (c.type === 'ai' ? 'AI' : 'IT'));
-    return '<div class="cert-card"><strong>' + c.name + '</strong><div class="issuer">' + c.issuer + ' - ' + c.year + '</div><span class="badge ' + c.type + '" style="margin-top:8px">' + badge + '</span></div>';
+    return '<div class="cert-card"><strong>' + c.name + '</strong><div class="issuer">' + c.issuer + ' — ' + c.year + '</div><span class="badge ' + c.type + '" style="margin-top:8px">' + badge + '</span></div>';
   }).join('');
   var courses = COURSES.map(function (c) { return '<span class="badge">' + c + '</span>'; }).join('');
   return '<h3>Certificazioni</h3><div class="cert-grid">' + cards + '</div><h3 style="margin-top:1.5rem">Corsi</h3><div style="display:flex;flex-wrap:wrap;gap:6px">' + courses + '</div>';
@@ -150,17 +158,17 @@ function buildSkills() {
 }
 
 function buildContact() {
-  return '<h2>Mettiamoci in contatto</h2><p>Profilo LinkedIn ufficiale:</p><p style="margin:12px 0"><a href="https://www.linkedin.com/in/davide-nisi-8a7324137" target="_blank" rel="noopener" style="color:#60a5fa;text-decoration:none;font-weight:500">linkedin.com/in/davide-nisi-8a7324137</a></p><p style="margin-top:1.5rem;color:var(--text-muted);font-size:0.85rem">NisiOS - portfolio interattivo ospitato su GitHub Pages. Dati aggiornati dal profilo LinkedIn.</p><div style="margin-top:1.8rem;padding:14px;background:var(--bg-panel);border-radius:8px;border:1px solid var(--border)"><strong>NisiOS</strong><br><span style="font-size:0.8rem;color:var(--text-muted)">Sistema Operativo Curriculum - v1.1</span></div>';
+  return '<h2>Mettiamoci in contatto</h2><p>Profilo LinkedIn ufficiale:</p><p style="margin:12px 0"><a href="https://www.linkedin.com/in/davide-nisi-8a7324137" target="_blank" rel="noopener">linkedin.com/in/davide-nisi-8a7324137</a></p><p style="margin-top:1.4rem;color:var(--text-muted);font-size:0.8rem">NisiOS — portfolio interattivo ospitato su GitHub Pages. Dati aggiornati dal profilo LinkedIn.</p><div style="margin-top:1.6rem;padding:12px 14px;background:var(--bg-panel);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink)"><strong>NisiOS</strong><br><span style="font-size:0.72rem;color:var(--text-muted)">Sistema Operativo Curriculum — v2.0 Axis Industrial</span></div>';
 }
 
 var windowTemplates = {
-  about: { title: "About - Davide Nisi", content: buildAbout() },
+  about: { title: "About — Davide Nisi", content: buildAbout() },
   experience: { title: "Experience", content: buildExperience() },
   certs: { title: "Certifications", content: buildCerts() },
   projects: { title: "Projects", content: buildProjects() },
   skills: { title: "Skills & Tools", content: buildSkills() },
   contact: { title: "Contact", content: buildContact() },
-  terminal: { title: "Terminal - nisi@NisiOS", content: null }
+  terminal: { title: "Terminal — nisi@NisiOS", content: null }
 };
 
 function openWindow(id) {
@@ -175,15 +183,23 @@ function openWindow(id) {
   if (!tpl) return;
 
   var win = document.createElement('div');
-  win.className = 'window';
+  win.className = 'window' + (id === 'terminal' ? ' terminal-win' : '');
   win.dataset.id = id;
   win.style.zIndex = ++zIndex;
-  win.style.top = (60 + openWindows.size * 28) + 'px';
-  win.style.left = (120 + openWindows.size * 36) + 'px';
-  win.style.width = (id === 'terminal' ? '600px' : '560px');
+
+  var mobile = isMobile();
+  if (mobile) {
+    win.style.top = '70px';
+    win.style.left = '6px';
+    win.style.width = 'calc(100vw - 12px)';
+  } else {
+    win.style.top = (50 + openWindows.size * 26) + 'px';
+    win.style.left = (100 + openWindows.size * 32) + 'px';
+    win.style.width = (id === 'terminal' ? '600px' : '560px');
+  }
 
   var isTerminal = id === 'terminal';
-  win.innerHTML = '<div class="window-header"><div class="window-title">' + tpl.title + '</div><div class="window-controls"><button class="win-btn win-min" title="Minimizza"></button><button class="win-btn win-max" title="Ingrandisci"></button><button class="win-btn win-close" title="Chiudi"></button></div></div><div class="window-body ' + (isTerminal ? 'terminal-body' : '') + '" id="body-' + id + '">' + (isTerminal ? '' : tpl.content) + '</div>';
+  win.innerHTML = '<div class="window-header"><div class="window-title">' + tpl.title + '</div><div class="window-controls"><button class="win-btn win-min" title="Minimizza" aria-label="Minimizza"></button><button class="win-btn win-max" title="Ingrandisci" aria-label="Ingrandisci"></button><button class="win-btn win-close" title="Chiudi" aria-label="Chiudi"></button></div></div><div class="window-body ' + (isTerminal ? 'terminal-body' : '') + '" id="body-' + id + '">' + (isTerminal ? '' : tpl.content) + '</div>';
 
   document.getElementById('windows-container').appendChild(win);
   openWindows.set(id, win);
@@ -194,6 +210,7 @@ function openWindow(id) {
 
   makeDraggable(win);
   win.addEventListener('mousedown', function () { win.style.zIndex = ++zIndex; });
+  win.addEventListener('touchstart', function () { win.style.zIndex = ++zIndex; }, { passive: true });
 
   if (isTerminal) initTerminal(win.querySelector('.window-body'));
   updateTaskbar();
@@ -213,7 +230,8 @@ function updateTaskbar() {
   openWindows.forEach(function (win, id) {
     var btn = document.createElement('div');
     btn.className = 'task-app' + (win.style.display !== 'none' ? ' active' : '');
-    btn.textContent = (windowTemplates[id].title.split('-')[0] || id).trim();
+    var shortTitle = (windowTemplates[id].title.split('—')[0] || windowTemplates[id].title.split('-')[0] || id).trim();
+    btn.textContent = shortTitle;
     btn.onclick = function () {
       if (win.style.display === 'none') { win.style.display = 'flex'; win.style.zIndex = ++zIndex; }
       else { win.style.zIndex = ++zIndex; }
@@ -225,20 +243,59 @@ function updateTaskbar() {
 
 function makeDraggable(win) {
   var header = win.querySelector('.window-header');
-  var offsetX, offsetY, dragging = false;
-  header.addEventListener('mousedown', function (e) {
-    if (e.target.classList.contains('win-btn')) return;
+  var offsetX = 0, offsetY = 0, dragging = false;
+
+  function startDrag(clientX, clientY) {
+    if (win.classList.contains('maximized')) return;
     dragging = true;
-    offsetX = e.clientX - win.offsetLeft;
-    offsetY = e.clientY - win.offsetTop;
+    offsetX = clientX - win.offsetLeft;
+    offsetY = clientY - win.offsetTop;
     win.style.zIndex = ++zIndex;
-  });
-  document.addEventListener('mousemove', function (e) {
+  }
+
+  function moveDrag(clientX, clientY) {
     if (!dragging) return;
-    win.style.left = (e.clientX - offsetX) + 'px';
-    win.style.top = Math.max(0, e.clientY - offsetY) + 'px';
+    var x = clientX - offsetX;
+    var y = clientY - offsetY;
+    // Keep window mostly on screen
+    var maxX = window.innerWidth - 60;
+    var maxY = window.innerHeight - 60;
+    win.style.left = Math.max(-win.offsetWidth + 80, Math.min(x, maxX)) + 'px';
+    win.style.top = Math.max(0, Math.min(y, maxY)) + 'px';
+  }
+
+  function endDrag() {
+    dragging = false;
+  }
+
+  header.addEventListener('mousedown', function (e) {
+    if (e.target.classList.contains('win-btn') || e.target.closest('.win-btn')) return;
+    e.preventDefault();
+    startDrag(e.clientX, e.clientY);
   });
-  document.addEventListener('mouseup', function () { dragging = false; });
+
+  document.addEventListener('mousemove', function (e) {
+    moveDrag(e.clientX, e.clientY);
+  });
+
+  document.addEventListener('mouseup', endDrag);
+
+  // Touch support
+  header.addEventListener('touchstart', function (e) {
+    if (e.target.classList.contains('win-btn') || e.target.closest('.win-btn')) return;
+    if (e.touches.length !== 1) return;
+    var t = e.touches[0];
+    startDrag(t.clientX, t.clientY);
+  }, { passive: true });
+
+  document.addEventListener('touchmove', function (e) {
+    if (!dragging || e.touches.length !== 1) return;
+    var t = e.touches[0];
+    moveDrag(t.clientX, t.clientY);
+  }, { passive: true });
+
+  document.addEventListener('touchend', endDrag);
+  document.addEventListener('touchcancel', endDrag);
 }
 
 document.querySelectorAll('.icon').forEach(function (icon) {
@@ -265,6 +322,11 @@ document.addEventListener('click', function (e) {
   }
 });
 
+// Recalculate on resize
+window.addEventListener('resize', function () {
+  updateClock();
+});
+
 function initTerminal(container) {
   var history = [];
   var histIdx = -1;
@@ -279,7 +341,7 @@ function initTerminal(container) {
   function newLine() {
     var line = document.createElement('div');
     line.className = 'terminal-input-line';
-    line.innerHTML = '<span class="prompt">nisi@NisiOS:~$</span> <input class="terminal-input" spellcheck="false" autocomplete="off">';
+    line.innerHTML = '<span class="prompt">nisi@NisiOS:~$</span> <input class="terminal-input" spellcheck="false" autocomplete="off" enterkeyhint="go">';
     container.appendChild(line);
     var input = line.querySelector('input');
     input.focus();
@@ -302,7 +364,7 @@ function initTerminal(container) {
     container.scrollTop = container.scrollHeight;
   }
 
-  print('<div class="output">NisiOS Terminal v1.1 - Digita <span style="color:#58a6ff">help</span> per i comandi disponibili.</div>');
+  print('<div class="output">NisiOS Terminal v2.0 — Digita <span style="color:var(--term-green)">help</span> per i comandi.</div>');
   newLine();
 }
 
@@ -322,22 +384,22 @@ function processCommand(cmd, print, newLine) {
       return '<strong>' + e.title + '</strong> @ ' + e.company + '<br>' + e.period + '<br>' + e.desc;
     }).join('<br><br>');
   } else if (lower === 'certs' || lower === 'certifications') {
-    output = CERTS.map(function (c) { return '- ' + c.name + ' (' + c.issuer + ', ' + c.year + ')'; }).join('<br>');
+    output = CERTS.map(function (c) { return '• ' + c.name + ' (' + c.issuer + ', ' + c.year + ')'; }).join('<br>');
   } else if (lower === 'projects') {
     output = PROJECTS.map(function (p) { return '<strong>' + p.name + '</strong> (' + p.period + ')<br>' + p.desc; }).join('<br><br>');
   } else if (lower === 'skills') {
-    output = SKILLS.map(function (s) { return s.name + ' - ' + s.level + '%'; }).join('<br>');
+    output = SKILLS.map(function (s) { return s.name + ' — ' + s.level + '%'; }).join('<br>');
   } else if (lower === 'contact') {
     output = 'LinkedIn: https://www.linkedin.com/in/davide-nisi-8a7324137';
   } else if (lower === 'neofetch') {
-    output = 'nisi@NisiOS<br>-------------<br>OS: NisiOS 1.1<br>Host: Davide Nisi - IT Manager<br>Company: Caracol AM<br>Kernel: Windows Server / AD / M365<br>Skills: System Admin ***** | Hardware *****<br>Certs: Claude 101 - SCCM - Apple';
+    output = 'nisi@NisiOS<br>-------------<br>OS: NisiOS 2.0 Axis Industrial<br>Host: Davide Nisi — IT Manager<br>Company: Caracol AM<br>Kernel: Windows Server / AD / M365<br>Skills: System Admin ***** | Hardware *****<br>Certs: Claude 101 · SCCM · Apple';
   } else if (lower === 'clear') {
     var body = document.getElementById('body-terminal');
     if (body) body.innerHTML = '';
     newLine();
     return;
   } else {
-    output = 'comando non trovato: ' + cmd + '<br>Digita help per l\'elenco dei comandi.';
+    output = 'comando non trovato: ' + cmd + '<br>Digita help per l\'elenco.';
   }
 
   print('<div class="output">' + output + '</div>');

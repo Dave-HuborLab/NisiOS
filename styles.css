@@ -1,7 +1,7 @@
 /* ============================================================
-   NisiOS — Axis Industrial Theme
-   Inspired by TemplateMo 619 Axis Industrial
+   NisiOS — Axis Industrial Theme (Responsive)
    Hard borders · Hard shadows · Safety orange · Brutalist type
+   Optimized for PC + Tablet + Smartphone
    ============================================================ */
 
 :root {
@@ -24,14 +24,12 @@
 
   --border: 3px solid #000000;
   --border-thin: 1px solid #000000;
-  --border-white: 2px solid rgba(255,255,255,0.12);
 
   --shadow: 6px 6px 0px #000000;
   --shadow-safety: 6px 6px 0px var(--safety);
-  --shadow-hover: 3px 3px 0px #000000;
 
-  --header-h: 44px;
   --taskbar-h: 48px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 * {
@@ -40,15 +38,21 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+  height: 100dvh;
+}
+
 body {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 400;
   background: var(--bg-desktop);
   color: var(--text);
   overflow: hidden;
-  height: 100vh;
   user-select: none;
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 /* ========== BOOT ========== */
@@ -61,6 +65,7 @@ body {
   justify-content: center;
   z-index: 9999;
   transition: opacity 0.5s ease;
+  padding: 1rem;
 }
 
 #boot-screen.fade-out {
@@ -70,11 +75,13 @@ body {
 
 .boot-content {
   text-align: center;
+  width: 100%;
+  max-width: 320px;
 }
 
 .boot-logo {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(3.5rem, 10vw, 6rem);
+  font-size: clamp(2.8rem, 12vw, 6rem);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: -0.04em;
@@ -88,15 +95,15 @@ body {
 }
 
 .boot-subtitle {
-  font-size: 0.7rem;
+  font-size: clamp(0.6rem, 2vw, 0.7rem);
   text-transform: uppercase;
   letter-spacing: 0.22em;
   color: var(--safety);
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.2rem;
 }
 
 .progress-bar {
-  width: 220px;
+  width: min(220px, 70vw);
   height: 4px;
   background: rgba(255,255,255,0.08);
   border: 2px solid var(--ink);
@@ -117,7 +124,7 @@ body {
 }
 
 .boot-status {
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.35);
@@ -126,8 +133,9 @@ body {
 /* ========== DESKTOP ========== */
 #desktop {
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
   background:
     linear-gradient(rgba(255,62,0,0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,62,0,0.03) 1px, transparent 1px),
@@ -138,28 +146,35 @@ body {
 
 #desktop.hidden { display: none; }
 
-/* Icons */
+/* Icons — Desktop default: vertical column */
 .desktop-icons {
   position: absolute;
-  top: 24px;
-  left: 20px;
+  top: 20px;
+  left: 16px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   z-index: 1;
+  max-height: calc(100% - var(--taskbar-h) - 40px);
+  overflow-y: auto;
+  scrollbar-width: none;
 }
+
+.desktop-icons::-webkit-scrollbar { display: none; }
 
 .icon {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 76px;
+  width: 72px;
   cursor: pointer;
-  padding: 8px 4px;
-  transition: none;
+  padding: 6px 4px;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
-.icon:hover .icon-img {
+.icon:hover .icon-img,
+.icon:focus-visible .icon-img {
   background: var(--safety);
   color: var(--base);
   border-color: var(--ink);
@@ -168,13 +183,13 @@ body {
 }
 
 .icon:active .icon-img {
-  transform: translate(2px, 2px);
-  box-shadow: 0 0 0 var(--ink);
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--ink);
 }
 
 .icon-img {
-  width: 48px;
-  height: 48px;
+  width: 46px;
+  height: 46px;
   border: 3px solid var(--ink);
   background: var(--base);
   color: var(--ink);
@@ -182,17 +197,16 @@ body {
   align-items: center;
   justify-content: center;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 700;
   text-transform: uppercase;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
   box-shadow: 4px 4px 0 var(--ink);
-  transition: none;
 }
 
 .term-icon {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   background: var(--term-bg);
   color: var(--term-green);
   border-color: var(--safety);
@@ -200,19 +214,21 @@ body {
 }
 
 .icon span {
-  font-size: 0.62rem;
+  font-size: 0.58rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-align: center;
   color: var(--text);
+  line-height: 1.2;
 }
 
 /* ========== WINDOWS ========== */
 .window {
   position: absolute;
-  min-width: 420px;
-  max-width: 720px;
+  min-width: 320px;
+  max-width: min(720px, 96vw);
+  width: 560px;
   background: var(--bg-window);
   border: 3px solid var(--ink);
   box-shadow: var(--shadow);
@@ -223,8 +239,12 @@ body {
   animation: openWin 0.15s steps(4);
 }
 
+.window.terminal-win {
+  width: 600px;
+}
+
 @keyframes openWin {
-  from { opacity: 0; transform: translate(8px, 8px); }
+  from { opacity: 0; transform: translate(6px, 6px); }
   to { opacity: 1; transform: translate(0, 0); }
 }
 
@@ -232,47 +252,59 @@ body {
   top: 0 !important;
   left: 0 !important;
   width: 100% !important;
-  height: calc(100% - var(--taskbar-h)) !important;
+  max-width: none !important;
+  height: calc(100% - var(--taskbar-h) - var(--safe-bottom)) !important;
   box-shadow: none;
-  max-width: none;
-  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
 }
 
 .window-header {
   background: var(--bg-title);
-  padding: 0 12px;
+  padding: 0 8px 0 12px;
   height: 36px;
+  min-height: 36px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  cursor: move;
+  cursor: grab;
   border-bottom: 2px solid var(--safety);
   user-select: none;
+  flex-shrink: 0;
+}
+
+.window-header:active {
+  cursor: grabbing;
 }
 
 .window-title {
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--base);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 70%;
 }
 
 .window-controls {
   display: flex;
-  gap: 0;
   height: 100%;
+  flex-shrink: 0;
 }
 
 .win-btn {
-  width: 36px;
+  width: 40px;
   height: 100%;
   border: none;
   border-left: 1px solid rgba(255,255,255,0.1);
   cursor: pointer;
   background: transparent;
   position: relative;
-  transition: none;
+  touch-action: manipulation;
 }
 
 .win-btn::before {
@@ -302,66 +334,81 @@ body {
   background: transparent;
 }
 
-.win-close:hover { background: var(--safety); }
-.win-close:hover::before { background: var(--base); }
-.win-min:hover { background: var(--term-amber); }
-.win-min:hover::before { background: var(--ink); }
-.win-max:hover { background: var(--term-green); }
-.win-max:hover::before { border-color: var(--ink); }
+.win-close:hover,
+.win-close:active { background: var(--safety); }
+.win-close:hover::before,
+.win-close:active::before { background: var(--base); }
+.win-min:hover,
+.win-min:active { background: var(--term-amber); }
+.win-min:hover::before,
+.win-min:active::before { background: var(--ink); }
+.win-max:hover,
+.win-max:active { background: var(--term-green); }
+.win-max:hover::before,
+.win-max:active::before { border-color: var(--ink); }
 
 .window-body {
-  padding: 20px 22px;
+  padding: 18px 20px;
   overflow-y: auto;
-  max-height: 62vh;
+  overflow-x: hidden;
+  flex: 1;
+  max-height: calc(100dvh - var(--taskbar-h) - 80px);
   font-size: 0.82rem;
-  line-height: 1.65;
+  line-height: 1.6;
+  -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: var(--safety) transparent;
 }
 
-.window-body::-webkit-scrollbar { width: 6px; }
+.window-body::-webkit-scrollbar { width: 5px; }
 .window-body::-webkit-scrollbar-track { background: transparent; }
 .window-body::-webkit-scrollbar-thumb { background: var(--safety); }
 
 .window-body h2 {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.5rem;
+  font-size: clamp(1.15rem, 4vw, 1.5rem);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: -0.03em;
-  line-height: 0.9;
+  line-height: 0.95;
   color: var(--base);
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.5rem;
 }
 
 .window-body h3 {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   color: var(--safety);
-  margin: 1.4rem 0 0.5rem;
+  margin: 1.3rem 0 0.45rem;
 }
 
 .window-body p {
   color: var(--text-muted);
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.65rem;
+}
+
+.window-body a {
+  color: var(--safety);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 /* Profile */
 .profile-header {
   display: flex;
-  gap: 16px;
+  gap: 14px;
   align-items: center;
-  margin-bottom: 1.2rem;
-  padding-bottom: 1.2rem;
+  margin-bottom: 1.1rem;
+  padding-bottom: 1.1rem;
   border-bottom: 2px solid rgba(255,255,255,0.08);
 }
 
 .avatar {
-  width: 64px;
-  height: 64px;
+  width: 58px;
+  height: 58px;
   border: 3px solid var(--ink);
   background: var(--safety);
   color: var(--base);
@@ -369,7 +416,7 @@ body {
   align-items: center;
   justify-content: center;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   font-weight: 700;
   flex-shrink: 0;
   box-shadow: 4px 4px 0 var(--ink);
@@ -377,11 +424,11 @@ body {
 
 .badge {
   display: inline-block;
-  font-size: 0.58rem;
+  font-size: 0.55rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 0.25em 0.6em;
+  letter-spacing: 0.08em;
+  padding: 0.25em 0.55em;
   border: 2px solid var(--ink);
   background: var(--base);
   color: var(--ink);
@@ -400,8 +447,8 @@ body {
 /* Timeline */
 .timeline-item {
   border-left: 3px solid var(--safety);
-  padding-left: 16px;
-  margin-bottom: 1.4rem;
+  padding-left: 14px;
+  margin-bottom: 1.25rem;
   position: relative;
 }
 
@@ -419,66 +466,62 @@ body {
 .timeline-item strong {
   color: var(--base);
   display: block;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: -0.01em;
 }
 
 .timeline-item .meta {
-  font-size: 0.68rem;
+  font-size: 0.64rem;
   color: var(--muted);
   margin: 3px 0 6px;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
 }
 
 /* Certs */
 .cert-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 10px;
 }
 
 .cert-card {
   background: var(--bg-panel);
   border: 2px solid var(--ink);
-  padding: 12px 14px;
+  padding: 12px;
   box-shadow: 4px 4px 0 var(--ink);
-  transition: none;
 }
 
-.cert-card:hover {
+.cert-card:active {
   background: var(--safety);
   color: var(--base);
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 var(--ink);
-}
-
-.cert-card:hover .issuer {
-  color: rgba(255,255,255,0.7);
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--ink);
 }
 
 .cert-card .issuer {
-  font-size: 0.62rem;
+  font-size: 0.58rem;
   color: var(--muted);
   margin-top: 4px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
 }
 
 /* Skills */
 .skill-bar {
-  margin-bottom: 12px;
+  margin-bottom: 11px;
 }
 
 .skill-bar label {
   display: flex;
   justify-content: space-between;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   margin-bottom: 4px;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   color: var(--text);
+  gap: 8px;
 }
 
 .skill-track {
@@ -497,12 +540,14 @@ body {
 .terminal-body {
   background: var(--term-bg);
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.78rem;
-  padding: 14px 16px;
-  height: 360px;
+  font-size: 0.75rem;
+  padding: 12px 14px;
+  height: 340px;
+  max-height: calc(100dvh - var(--taskbar-h) - 100px);
   overflow-y: auto;
   color: #c9d1d9;
   border-top: 2px solid var(--safety);
+  -webkit-overflow-scrolling: touch;
 }
 
 .terminal-body .prompt {
@@ -515,12 +560,14 @@ body {
   white-space: pre-wrap;
   margin-bottom: 10px;
   line-height: 1.5;
+  word-break: break-word;
 }
 
 .terminal-input-line {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .terminal-input {
@@ -531,6 +578,7 @@ body {
   font-family: inherit;
   font-size: inherit;
   flex: 1;
+  min-width: 120px;
   caret-color: var(--term-green);
 }
 
@@ -540,34 +588,40 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  height: var(--taskbar-h);
+  height: calc(var(--taskbar-h) + var(--safe-bottom));
+  padding-bottom: var(--safe-bottom);
   background: var(--ink);
   border-top: 3px solid var(--safety);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 10px;
+  padding-left: 8px;
+  padding-right: 10px;
   z-index: 100;
+}
+
+.taskbar-left {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
 }
 
 #start-btn {
   background: var(--safety);
   color: var(--base);
   border: 2px solid var(--ink);
-  padding: 6px 14px;
+  padding: 6px 12px;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   cursor: pointer;
-  box-shadow: 3px 3px 0 rgba(255,255,255,0.15);
-  transition: none;
-}
-
-#start-btn:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0 rgba(255,255,255,0.2);
+  box-shadow: 3px 3px 0 rgba(255,255,255,0.12);
+  flex-shrink: 0;
+  touch-action: manipulation;
 }
 
 #start-btn:active {
@@ -578,24 +632,31 @@ body {
 .running-apps {
   display: flex;
   gap: 4px;
-  margin-left: 12px;
+  margin-left: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
+
+.running-apps::-webkit-scrollbar { display: none; }
 
 .task-app {
   background: transparent;
   border: 1px solid rgba(255,255,255,0.15);
-  padding: 5px 11px;
-  font-size: 0.65rem;
+  padding: 5px 10px;
+  font-size: 0.6rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   cursor: pointer;
   color: rgba(255,255,255,0.5);
-  transition: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  touch-action: manipulation;
 }
 
-.task-app:hover {
-  background: rgba(255,255,255,0.08);
+.task-app:active {
+  background: rgba(255,255,255,0.1);
   color: var(--base);
 }
 
@@ -605,24 +666,33 @@ body {
   color: var(--base);
 }
 
+.taskbar-right {
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
 #clock {
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
   color: rgba(255,255,255,0.45);
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 /* Start Menu */
 #start-menu {
   position: absolute;
-  bottom: calc(var(--taskbar-h) + 8px);
-  left: 10px;
-  width: 280px;
+  bottom: calc(var(--taskbar-h) + var(--safe-bottom) + 6px);
+  left: 8px;
+  width: min(280px, calc(100vw - 16px));
   background: var(--bg-window);
   border: 3px solid var(--ink);
   box-shadow: var(--shadow-safety);
   z-index: 110;
   overflow: hidden;
+  max-height: calc(100dvh - var(--taskbar-h) - 24px);
+  display: flex;
+  flex-direction: column;
   animation: menuIn 0.12s steps(3);
 }
 
@@ -637,12 +707,13 @@ body {
   padding: 14px 16px;
   background: var(--ink);
   border-bottom: 2px solid var(--safety);
+  flex-shrink: 0;
 }
 
 .start-header strong {
   display: block;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: -0.02em;
@@ -650,9 +721,9 @@ body {
 }
 
 .start-header span {
-  font-size: 0.62rem;
+  font-size: 0.58rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--safety);
   margin-top: 3px;
   display: block;
@@ -661,20 +732,24 @@ body {
 #start-menu ul {
   list-style: none;
   padding: 6px 0;
+  overflow-y: auto;
+  flex: 1;
+  -webkit-overflow-scrolling: touch;
 }
 
 #start-menu li {
-  padding: 10px 16px;
+  padding: 12px 16px;
   cursor: pointer;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
   color: var(--text);
-  transition: none;
   border-left: 3px solid transparent;
+  touch-action: manipulation;
 }
 
+#start-menu li:active,
 #start-menu li:hover {
   background: var(--safety);
   color: var(--base);
@@ -683,31 +758,218 @@ body {
 
 .start-footer {
   padding: 9px 16px;
-  font-size: 0.58rem;
+  font-size: 0.55rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--muted);
   border-top: 1px solid rgba(255,255,255,0.08);
   text-align: center;
+  flex-shrink: 0;
 }
 
-/* Responsive */
-@media (max-width: 700px) {
-  .desktop-icons {
-    flex-direction: row;
-    flex-wrap: wrap;
-    top: 12px;
-    left: 10px;
-    gap: 8px;
-  }
-  .icon { width: 68px; }
+/* ============================================================
+   RESPONSIVE — TABLET
+   ============================================================ */
+@media (max-width: 900px) {
   .window {
-    min-width: 92vw;
-    max-width: 96vw;
+    width: min(520px, 94vw);
   }
-  .window-body { max-height: 55vh; }
+
+  .window.terminal-win {
+    width: min(560px, 94vw);
+  }
+
+  .cert-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE / SMARTPHONE
+   ============================================================ */
+@media (max-width: 700px) {
+  :root {
+    --taskbar-h: 52px;
+    --shadow: 4px 4px 0px #000000;
+    --shadow-safety: 4px 4px 0px var(--safety);
+  }
+
+  /* Icons become a horizontal dock at the top */
+  .desktop-icons {
+    top: 10px;
+    left: 0;
+    right: 0;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 4px;
+    padding: 0 8px 8px;
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .desktop-icons::-webkit-scrollbar { display: none; }
+
+  .icon {
+    width: 60px;
+    flex-shrink: 0;
+    padding: 4px 2px;
+  }
+
+  .icon-img {
+    width: 42px;
+    height: 42px;
+    font-size: 0.8rem;
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+
+  .term-icon {
+    box-shadow: 3px 3px 0 var(--safety);
+  }
+
+  .icon span {
+    font-size: 0.52rem;
+  }
+
+  /* Windows: nearly full screen, no hard offset */
+  .window {
+    min-width: 0;
+    width: calc(100vw - 12px) !important;
+    max-width: none;
+    left: 6px !important;
+    top: 70px !important;
+    box-shadow: var(--shadow);
+  }
+
+  .window.terminal-win {
+    width: calc(100vw - 12px) !important;
+  }
+
+  .window.maximized {
+    width: 100% !important;
+    left: 0 !important;
+    top: 0 !important;
+    height: calc(100% - var(--taskbar-h) - var(--safe-bottom)) !important;
+  }
+
+  .window-header {
+    height: 40px;
+    min-height: 40px;
+  }
+
+  .win-btn {
+    width: 44px; /* larger touch targets */
+  }
+
+  .window-body {
+    padding: 14px 14px;
+    font-size: 0.8rem;
+    max-height: calc(100dvh - var(--taskbar-h) - 120px);
+  }
+
+  .terminal-body {
+    height: auto;
+    min-height: 240px;
+    max-height: calc(100dvh - var(--taskbar-h) - 120px);
+    font-size: 0.72rem;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .avatar {
+    width: 52px;
+    height: 52px;
+    font-size: 1.1rem;
+  }
+
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-card {
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+
+  /* Taskbar */
+  #start-btn {
+    padding: 7px 10px;
+    font-size: 0.7rem;
+  }
+
+  .task-app {
+    padding: 6px 9px;
+    font-size: 0.55rem;
+  }
+
+  #clock {
+    font-size: 0.58rem;
+  }
+
+  /* Start menu full-ish width */
   #start-menu {
-    width: calc(100vw - 20px);
-    left: 10px;
+    left: 6px;
+    width: calc(100vw - 12px);
+    max-height: calc(100dvh - var(--taskbar-h) - 20px);
+  }
+
+  #start-menu li {
+    padding: 14px 16px; /* better touch targets */
+  }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .icon {
+    width: 54px;
+  }
+
+  .icon-img {
+    width: 38px;
+    height: 38px;
+    font-size: 0.72rem;
+  }
+
+  .window-body h2 {
+    font-size: 1.1rem;
+  }
+
+  .skill-bar label {
+    font-size: 0.62rem;
+  }
+}
+
+/* Landscape mobile */
+@media (max-height: 480px) and (orientation: landscape) {
+  .desktop-icons {
+    top: 6px;
+    padding-bottom: 4px;
+  }
+
+  .icon-img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .icon span {
+    display: none;
+  }
+
+  .window {
+    top: 50px !important;
+  }
+
+  .window-body {
+    max-height: calc(100dvh - var(--taskbar-h) - 70px);
+  }
+
+  .terminal-body {
+    max-height: calc(100dvh - var(--taskbar-h) - 70px);
   }
 }
