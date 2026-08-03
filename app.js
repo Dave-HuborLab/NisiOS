@@ -1,45 +1,93 @@
-/* NisiOS - Interactive CV Operating System */
+/* NisiOS - Interactive CV Operating System
+   Updated with full LinkedIn profile data - Davide Nisi
+*/
 
 const PROFILE = {
   name: "Davide Nisi",
   location: "Ornago, Lombardia, Italia",
   current: "Caracol AM",
-  roleHint: "IT Professional - Hardware & Systems",
-  about: "Nel corso degli anni ho maturato passione e manualita nell'installazione, configurazione e gestione di sistemi IT. Specializzato in service e supporto Apple (Mac e iOS), deployment di immagini, gestione dispositivi enterprise e troubleshooting hardware/software.\n\nAttualmente in Caracol AM, realta leader nell'Additive Manufacturing robotico su larga scala (LFAM), dove le competenze tecniche di configurazione e supporto sistemi si integrano in un contesto di innovazione industriale avanzata.",
-  education: "IIS DON MILANI",
+  roleHint: "IT Manager",
+  headline: "IT Manager presso Caracol AM",
+  about: "Nel corso degli anni ho maturato passione e manualita nell'installazione, configurazione e ordinaria manutenzione di apparecchiature informatiche quali Notebook, Desktop, Tablet e Smartphone. Conoscenza delle componenti interne dei computer, le varie architetture, i tipi di memoria, le schede grafiche e quelle audio. Il mio obiettivo e sempre stato quello di crescere, ampliare sempre il mio bagaglio culturale e di assorbire ogni singola novita che il mondo informatico possa offrire giorno dopo giorno. Da un paio di anni ho intrapreso un percorso di crescita in ambito sistemistico per quanto riguarda l'analisi e l'evasione di richieste tramite Incident e Service Request riguardanti Active Directory, Exchange, Console Antipam e Monitoraggio.",
+  education: "IIS DON MILANI - Informatica (2011-2016) - Votazione 67",
   recommendations: [
-    { author: "Vincenzo Ruggieri", text: "Professionista preparato, affidabile e motivato. Grazie al suo know-how ha gestito egregiamente tutto il team, approfondendo minuziosamente ogni aspetto tecnico e di management." },
-    { author: "Matteo Cherobin", text: "Nonostante fossimo in due reparti diversi ho avuto la possibilita di collaborare con lui ed apprezzarne il valore tecnico e umano. Grande lavoratore e ottima persona!" }
+    { author: "Vincenzo Ruggieri", text: "Ho avuto il piacere di lavorare con Davide Nisi per la stessa azienda. Professionista preparato, affidabile e motivato. Grazie al suo know-how ha gestito egregiamente tutto il team, approfondendo minuziosamente ogni aspetto tecnico e di management. Spero un giorno di incrociare nuovamente i nostri percorsi lavorativi." },
+    { author: "Matteo Cherobin", text: "Ho avuto il piacere di lavorare con Davide presso la stessa azienda. Nonostante fossimo in due reparti diversi ho avuto la possibilita di collaborare con lui ed apprezzarne il valore tecnico e umano. Grande lavoratore e ottima persona!" }
   ]
 };
 
+const EXPERIENCE = [
+  {
+    title: "IT Manager",
+    company: "Caracol AM",
+    period: "apr 2024 - Presente (2 anni 5 mesi)",
+    location: "Barlassina, Lombardia, Italia - In sede",
+    type: "A tempo pieno",
+    desc: "IT Manager presso Caracol AM, scale-up europea leader nel Large Format Additive Manufacturing (robotica + stampa 3D industriale)."
+  },
+  {
+    title: "IT Manager",
+    company: "Area MediaWeb Srl",
+    period: "giu 2023 - gen 2024 (8 mesi)",
+    location: "Veduggio, Lombardia, Italia - In sede",
+    type: "A tempo pieno",
+    desc: "Installation and management of Windows Server (2003 R2, 2019, 2022), Active Directory, DNS, DHCP, File Server, NAS. Gestione reti IT e Gestione IT."
+  },
+  {
+    title: "IT Manager and System Administrator",
+    company: "TECMA SOLUTIONS S.p.A.",
+    period: "gen 2020 - giu 2023 (3 anni 6 mesi)",
+    location: "Milano, Italia",
+    type: "A tempo pieno",
+    desc: "Installation and management of Windows Server (2019), Active Directory, DNS, DHCP, File Server, NAS. Hardware troubleshooting su Windows/Mac, PC e multifunzione. Microsoft Office 365, Exchange Online, SharePoint Online. Networking (Firewall, Switch, Router, Access Point) e protocolli TCP/IP. Ambienti virtuali on-premise e cloud. Backup ad alta affidabilita e strutture iperconvergenti (Veeam, Iperius, Keepit). MDM WorkspaceONE. Troubleshooting OS e security (Sophos Central). Supporto Operation & Maintenance Server e network device. Gestione domini WEB (Aruba, FileZilla)."
+  },
+  {
+    title: "IT System Administrator",
+    company: "Elmec Informatica",
+    period: "giu 2019 - gen 2020 (8 mesi)",
+    location: "Biassono, Lombardia, Italia",
+    type: "A tempo pieno",
+    desc: "Proficient in system administration, with expertise in managing IT infrastructures, hardware, and vendor relationships."
+  },
+  {
+    title: "Senior Hardware Technician",
+    company: "Elmec Informatica",
+    period: "gen 2017 - mag 2019 (2 anni 5 mesi)",
+    location: "Biassono, Lombardia, Italia",
+    type: "A tempo pieno",
+    desc: "Advanced hardware expertise (servers, storage, networking). Troubleshooting e ottimizzazione. Client management, vendor relationship, documentazione e reporting. Continual learning su tecnologie hardware emergenti."
+  }
+];
+
 const CERTS = [
   { name: "Claude 101", issuer: "Anthropic", year: "mag 2026", type: "ai" },
+  { name: "Learning System Center Configuration Manager (2016)", issuer: "LinkedIn Learning", year: "mar 2020", type: "default" },
   { name: "ACMT 2018 - Apple Mac Service Certification", issuer: "Apple", year: "nov 2018", type: "apple" },
   { name: "ACIT 2018 - Apple iOS Service Certification", issuer: "Apple", year: "mag 2019", type: "apple" },
   { name: "SVC-18A Apple Service Fundamentals", issuer: "Apple", year: "lug 2018", type: "apple" },
   { name: "Mac Integration Basic 10.13", issuer: "Apple", year: "feb 2018", type: "apple" },
-  { name: "Learning System Center Configuration Manager (2016)", issuer: "LinkedIn Learning", year: "mar 2020", type: "default" },
   { name: "Android Enterprise Associate", issuer: "Android Enterprise", year: "ott 2019", type: "android" },
   { name: "Zero-touch enrollment", issuer: "Android Enterprise", year: "nov 2019", type: "android" }
 ];
 
-const COURSES = ["Basic Exchange", "Decreto Legislativo 231/2001", "Elmec College XXI", "Elmec Major Incident Management", "Lansweeper e Altiris", "Start Program: Excel", "Start Program: PowerPoint", "Start Program: Word e Posta", "Start Program: Social Media", "Start Program: Sicurezza Rischio Basso"];
+const COURSES = ["Basic Exchange", "Decreto Legislativo 231 del 2001", "Elmec College XXI", "Elmec Major Incident Management", "Lansweeper e Altiris", "Start Program: Excel", "Start Program: PowerPoint", "Start Program: Word e Posta", "Start Program: Social Media", "Start Program: Sicurezza Rischio Basso"];
 
 const PROJECTS = [{
   name: "Emmelibri PDL Rollout",
   period: "mar 2019 - giu 2019",
-  desc: "Upgrade tecnologico completo: preparazione in laboratorio di immagini master ad hoc (gestionali, driver, configurazioni), deploy on-site delle postazioni (monitor, tastiere, mouse, laptop), configurazione software e troubleshooting post-installazione."
+  company: "Elmec Informatica",
+  desc: "Il progetto e stato sviluppato con l'obiettivo di effettuare un Upgrade tecnologico per il cliente con una preparazione in Laboratorio che prevedeva una prima fase di Deploy delle Immagini Master create ad hoc con tutti i vari gestionali, configurazioni e aggiornamenti Driver. Poi intervento direttamente On-Site presso le varie sedi e punti vendita per l'installazione della nuova postazione comprensiva di Monitor di fascia Business, tastiera, Mouse, Laptop e configurazione software con eventuale Troubleshooting in caso di necessita."
 }];
 
 const SKILLS = [
-  { name: "Apple Hardware & Service (Mac / iOS)", level: 92 },
-  { name: "Imaging & Deployment (Master Images)", level: 88 },
-  { name: "System Configuration & Troubleshooting", level: 90 },
-  { name: "Android Enterprise / MDM", level: 75 },
-  { name: "SCCM / Endpoint Management", level: 70 },
-  { name: "Team Coordination & Support", level: 85 },
-  { name: "IT Operations & Incident Management", level: 80 }
+  { name: "Windows Server / Active Directory", level: 92 },
+  { name: "System Administration & Troubleshooting", level: 90 },
+  { name: "Networking (Firewall, Switch, Router)", level: 85 },
+  { name: "Microsoft 365 / Exchange Online", level: 88 },
+  { name: "Hardware Support (Windows / Mac)", level: 90 },
+  { name: "Backup & Hyperconverged (Veeam)", level: 82 },
+  { name: "MDM / WorkspaceONE", level: 78 },
+  { name: "IT Management & Team Coordination", level: 88 }
 ];
 
 window.addEventListener('load', function () {
@@ -53,7 +101,7 @@ window.addEventListener('load', function () {
       updateClock();
       setInterval(updateClock, 1000);
     }, 600);
-  }, 2200);
+  }, 2000);
 });
 
 function updateClock() {
@@ -70,11 +118,13 @@ function buildAbout() {
   var recs = PROFILE.recommendations.map(function (r) {
     return '<blockquote style="border-left:3px solid var(--accent);padding-left:12px;margin:10px 0;color:var(--text-muted);font-style:italic">"' + r.text + '"<br><span style="font-style:normal;font-size:0.8rem;color:var(--text)">- ' + r.author + '</span></blockquote>';
   }).join('');
-  return '<div class="profile-header"><div class="avatar">DN</div><div><h2 style="margin:0">' + PROFILE.name + '</h2><p style="margin:4px 0 0;color:var(--text-muted)">' + PROFILE.roleHint + '</p><p style="margin:2px 0 0;font-size:0.82rem">' + PROFILE.location + '</p></div></div><p>' + PROFILE.about.replace(/\n/g, '<br>') + '</p><h3>Formazione</h3><p><strong>' + PROFILE.education + '</strong></p><h3>Referenze</h3>' + recs;
+  return '<div class="profile-header"><div class="avatar">DN</div><div><h2 style="margin:0">' + PROFILE.name + '</h2><p style="margin:4px 0 0;color:var(--text-muted)">' + PROFILE.roleHint + ' @ ' + PROFILE.current + '</p><p style="margin:2px 0 0;font-size:0.82rem">' + PROFILE.location + '</p></div></div><p>' + PROFILE.about.replace(/\n/g, '<br>') + '</p><h3>Formazione</h3><p><strong>' + PROFILE.education + '</strong></p><h3>Referenze</h3>' + recs;
 }
 
 function buildExperience() {
-  return '<div class="timeline-item"><strong>Caracol AM</strong><div class="meta">Attuale - Ornago / Barlassina - Additive Manufacturing</div><p>Opero all\'interno di una delle scale-up europee piu dinamiche nel Large Format Additive Manufacturing (robotica + 3D printing industriale). Contesto ad alta innovazione dove le competenze di configurazione sistemi, supporto tecnico e deployment trovano applicazione in ambienti produttivi avanzati.</p></div><div class="timeline-item"><strong>Esperienza IT precedente</strong><div class="meta">Installazione - Configurazione - Service - Deployment</div><p>Anni di esperienza pratica su installazione e configurazione di postazioni, gestione immagini master, supporto Apple (Mac e iOS), Android Enterprise e troubleshooting. Capacita dimostrata di gestire team e approfondire aspetti sia tecnici che di management.</p></div><p style="font-size:0.8rem;color:var(--text-muted);margin-top:1.5rem">Nota: i dettagli completi sono disponibili sul profilo LinkedIn pubblico.</p>';
+  return EXPERIENCE.map(function (e) {
+    return '<div class="timeline-item"><strong>' + e.title + '</strong> - ' + e.company + '<div class="meta">' + e.period + ' | ' + e.location + '</div><p>' + e.desc + '</p></div>';
+  }).join('');
 }
 
 function buildCerts() {
@@ -88,19 +138,19 @@ function buildCerts() {
 
 function buildProjects() {
   return PROJECTS.map(function (p) {
-    return '<div class="timeline-item"><strong>' + p.name + '</strong><div class="meta">' + p.period + '</div><p>' + p.desc + '</p></div>';
-  }).join('') + '<p style="margin-top:1.5rem;color:var(--text-muted);font-size:0.85rem">Altri progetti di supporto IT, imaging e deployment.</p>';
+    return '<div class="timeline-item"><strong>' + p.name + '</strong><div class="meta">' + p.period + ' | ' + p.company + '</div><p>' + p.desc + '</p></div>';
+  }).join('');
 }
 
 function buildSkills() {
   var bars = SKILLS.map(function (s) {
     return '<div class="skill-bar"><label><span>' + s.name + '</span><span>' + s.level + '%</span></label><div class="skill-track"><div class="skill-fill" style="width:' + s.level + '%"></div></div></div>';
   }).join('');
-  return '<h3>Competenze principali</h3>' + bars + '<h3 style="margin-top:1.4rem">Stack & Tools</h3><div style="display:flex;flex-wrap:wrap;gap:6px"><span class="badge apple">macOS / Mac Hardware</span><span class="badge apple">iOS Service</span><span class="badge">Imaging / Master Deploy</span><span class="badge">SCCM</span><span class="badge android">Android Enterprise</span><span class="badge">MDM / Zero-touch</span><span class="badge">Lansweeper / Altiris</span><span class="badge">Incident Management</span><span class="badge ai">Claude / AI tools</span></div>';
+  return '<h3>Competenze principali</h3>' + bars + '<h3 style="margin-top:1.4rem">Stack & Tools</h3><div style="display:flex;flex-wrap:wrap;gap:6px"><span class="badge">Windows Server</span><span class="badge">Active Directory</span><span class="badge">Microsoft 365</span><span class="badge">Veeam</span><span class="badge">Sophos</span><span class="badge">WorkspaceONE</span><span class="badge apple">macOS / Hardware</span><span class="badge">Networking</span><span class="badge ai">Claude / AI</span></div>';
 }
 
 function buildContact() {
-  return '<h2>Mettiamoci in contatto</h2><p>Profilo LinkedIn ufficiale:</p><p style="margin:12px 0"><a href="https://it.linkedin.com/in/davide-nisi-8a7324137" target="_blank" rel="noopener" style="color:#60a5fa;text-decoration:none;font-weight:500">linkedin.com/in/davide-nisi-8a7324137</a></p><p style="margin-top:1.5rem;color:var(--text-muted);font-size:0.85rem">Questo sito e un portfolio interattivo (NisiOS) ospitato su GitHub Pages.</p><div style="margin-top:1.8rem;padding:14px;background:var(--bg-panel);border-radius:8px;border:1px solid var(--border)"><strong>NisiOS</strong><br><span style="font-size:0.8rem;color:var(--text-muted)">Sistema Operativo Curriculum - v1.0</span></div>';
+  return '<h2>Mettiamoci in contatto</h2><p>Profilo LinkedIn ufficiale:</p><p style="margin:12px 0"><a href="https://www.linkedin.com/in/davide-nisi-8a7324137" target="_blank" rel="noopener" style="color:#60a5fa;text-decoration:none;font-weight:500">linkedin.com/in/davide-nisi-8a7324137</a></p><p style="margin-top:1.5rem;color:var(--text-muted);font-size:0.85rem">NisiOS - portfolio interattivo ospitato su GitHub Pages. Dati aggiornati dal profilo LinkedIn.</p><div style="margin-top:1.8rem;padding:14px;background:var(--bg-panel);border-radius:8px;border:1px solid var(--border)"><strong>NisiOS</strong><br><span style="font-size:0.8rem;color:var(--text-muted)">Sistema Operativo Curriculum - v1.1</span></div>';
 }
 
 var windowTemplates = {
@@ -130,7 +180,7 @@ function openWindow(id) {
   win.style.zIndex = ++zIndex;
   win.style.top = (60 + openWindows.size * 28) + 'px';
   win.style.left = (120 + openWindows.size * 36) + 'px';
-  win.style.width = (id === 'terminal' ? '580px' : '520px');
+  win.style.width = (id === 'terminal' ? '600px' : '560px');
 
   var isTerminal = id === 'terminal';
   win.innerHTML = '<div class="window-header"><div class="window-title">' + tpl.title + '</div><div class="window-controls"><button class="win-btn win-min" title="Minimizza"></button><button class="win-btn win-max" title="Ingrandisci"></button><button class="win-btn win-close" title="Chiudi"></button></div></div><div class="window-body ' + (isTerminal ? 'terminal-body' : '') + '" id="body-' + id + '">' + (isTerminal ? '' : tpl.content) + '</div>';
@@ -252,7 +302,7 @@ function initTerminal(container) {
     container.scrollTop = container.scrollHeight;
   }
 
-  print('<div class="output">NisiOS Terminal v1.0 - Digita <span style="color:#58a6ff">help</span> per i comandi disponibili.</div>');
+  print('<div class="output">NisiOS Terminal v1.1 - Digita <span style="color:#58a6ff">help</span> per i comandi disponibili.</div>');
   newLine();
 }
 
@@ -264,21 +314,23 @@ function processCommand(cmd, print, newLine) {
   if (lower === 'help') {
     output = 'Comandi: whoami, about, experience, certs, projects, skills, contact, neofetch, clear, help';
   } else if (lower === 'whoami') {
-    output = PROFILE.name + '<br>' + PROFILE.roleHint + '<br>' + PROFILE.location + '<br>Attuale: ' + PROFILE.current;
+    output = PROFILE.name + '<br>' + PROFILE.roleHint + ' @ ' + PROFILE.current + '<br>' + PROFILE.location;
   } else if (lower === 'about') {
     output = PROFILE.about.replace(/\n/g, '<br>');
   } else if (lower === 'experience') {
-    output = 'Caracol AM (attuale)<br>Scale-up europea leader in Large Format Additive Manufacturing.<br><br>Precedente esperienza IT: installazione, configurazione, imaging, service Apple, Android Enterprise, troubleshooting e coordinamento team.';
+    output = EXPERIENCE.map(function (e) {
+      return '<strong>' + e.title + '</strong> @ ' + e.company + '<br>' + e.period + '<br>' + e.desc;
+    }).join('<br><br>');
   } else if (lower === 'certs' || lower === 'certifications') {
     output = CERTS.map(function (c) { return '- ' + c.name + ' (' + c.issuer + ', ' + c.year + ')'; }).join('<br>');
   } else if (lower === 'projects') {
-    output = PROJECTS.map(function (p) { return p.name + ' (' + p.period + ')<br>  ' + p.desc; }).join('<br><br>');
+    output = PROJECTS.map(function (p) { return '<strong>' + p.name + '</strong> (' + p.period + ')<br>' + p.desc; }).join('<br><br>');
   } else if (lower === 'skills') {
     output = SKILLS.map(function (s) { return s.name + ' - ' + s.level + '%'; }).join('<br>');
   } else if (lower === 'contact') {
-    output = 'LinkedIn: https://it.linkedin.com/in/davide-nisi-8a7324137';
+    output = 'LinkedIn: https://www.linkedin.com/in/davide-nisi-8a7324137';
   } else if (lower === 'neofetch') {
-    output = 'nisi@NisiOS<br>-------------<br>OS: NisiOS 1.0<br>Host: Davide Nisi Workstation<br>Kernel: IT-Support 5.x<br>Shell: nisi-sh<br>Skills: Apple ***** | Imaging ****<br>Certs: ACMT - ACIT - Android Enterprise - Claude';
+    output = 'nisi@NisiOS<br>-------------<br>OS: NisiOS 1.1<br>Host: Davide Nisi - IT Manager<br>Company: Caracol AM<br>Kernel: Windows Server / AD / M365<br>Skills: System Admin ***** | Hardware *****<br>Certs: Claude 101 - SCCM - Apple';
   } else if (lower === 'clear') {
     var body = document.getElementById('body-terminal');
     if (body) body.innerHTML = '';
